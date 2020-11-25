@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ERP.mapper.ordersMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ERP.model.orders" >
+    <constructor >
+      <idArg column="uuid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="createtime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="checktime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="starttime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="endtime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="type" jdbcType="CHAR" javaType="java.lang.String" />
+      <arg column="creater" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="checker" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="starter" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ender" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="supplieruuid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="totalmoney" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="state" jdbcType="CHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uuid, createtime, checktime, starttime, endtime, type, creater, checker, starter, 
+    ender, supplieruuid, totalmoney, state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from orders
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ERP.model.orders" >
+    insert into orders (uuid, createtime, checktime, 
+      starttime, endtime, type, creater, 
+      checker, starter, ender, 
+      supplieruuid, totalmoney, state
+      )
+    values (#{uuid,jdbcType=INTEGER}, #{createtime,jdbcType=DATE}, #{checktime,jdbcType=DATE}, 
+      #{starttime,jdbcType=DATE}, #{endtime,jdbcType=DATE}, #{type,jdbcType=CHAR}, #{creater,jdbcType=INTEGER}, 
+      #{checker,jdbcType=INTEGER}, #{starter,jdbcType=INTEGER}, #{ender,jdbcType=INTEGER}, 
+      #{supplieruuid,jdbcType=INTEGER}, #{totalmoney,jdbcType=INTEGER}, #{state,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ERP.model.orders" >
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="checktime != null" >
+        checktime,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="creater != null" >
+        creater,
+      </if>
+      <if test="checker != null" >
+        checker,
+      </if>
+      <if test="starter != null" >
+        starter,
+      </if>
+      <if test="ender != null" >
+        ender,
+      </if>
+      <if test="supplieruuid != null" >
+        supplieruuid,
+      </if>
+      <if test="totalmoney != null" >
+        totalmoney,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        #{uuid,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="checktime != null" >
+        #{checktime,jdbcType=DATE},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=DATE},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=DATE},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="creater != null" >
+        #{creater,jdbcType=INTEGER},
+      </if>
+      <if test="checker != null" >
+        #{checker,jdbcType=INTEGER},
+      </if>
+      <if test="starter != null" >
+        #{starter,jdbcType=INTEGER},
+      </if>
+      <if test="ender != null" >
+        #{ender,jdbcType=INTEGER},
+      </if>
+      <if test="supplieruuid != null" >
+        #{supplieruuid,jdbcType=INTEGER},
+      </if>
+      <if test="totalmoney != null" >
+        #{totalmoney,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ERP.model.orders" >
+    update orders
+    <set >
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=DATE},
+      </if>
+      <if test="checktime != null" >
+        checktime = #{checktime,jdbcType=DATE},
+      </if>
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=DATE},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=DATE},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+      <if test="creater != null" >
+        creater = #{creater,jdbcType=INTEGER},
+      </if>
+      <if test="checker != null" >
+        checker = #{checker,jdbcType=INTEGER},
+      </if>
+      <if test="starter != null" >
+        starter = #{starter,jdbcType=INTEGER},
+      </if>
+      <if test="ender != null" >
+        ender = #{ender,jdbcType=INTEGER},
+      </if>
+      <if test="supplieruuid != null" >
+        supplieruuid = #{supplieruuid,jdbcType=INTEGER},
+      </if>
+      <if test="totalmoney != null" >
+        totalmoney = #{totalmoney,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=CHAR},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ERP.model.orders" >
+    update orders
+    set createtime = #{createtime,jdbcType=DATE},
+      checktime = #{checktime,jdbcType=DATE},
+      starttime = #{starttime,jdbcType=DATE},
+      endtime = #{endtime,jdbcType=DATE},
+      type = #{type,jdbcType=CHAR},
+      creater = #{creater,jdbcType=INTEGER},
+      checker = #{checker,jdbcType=INTEGER},
+      starter = #{starter,jdbcType=INTEGER},
+      ender = #{ender,jdbcType=INTEGER},
+      supplieruuid = #{supplieruuid,jdbcType=INTEGER},
+      totalmoney = #{totalmoney,jdbcType=INTEGER},
+      state = #{state,jdbcType=CHAR}
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </update>
+</mapper>

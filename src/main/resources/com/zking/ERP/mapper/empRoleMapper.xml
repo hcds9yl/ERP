@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ERP.mapper.empRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ERP.model.empRole" >
+    <constructor >
+      <arg column="empuuid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="roleuuid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.zking.ERP.model.empRole" >
+    insert into emp_role (empuuid, roleuuid)
+    values (#{empuuid,jdbcType=INTEGER}, #{roleuuid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ERP.model.empRole" >
+    insert into emp_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="empuuid != null" >
+        empuuid,
+      </if>
+      <if test="roleuuid != null" >
+        roleuuid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="empuuid != null" >
+        #{empuuid,jdbcType=INTEGER},
+      </if>
+      <if test="roleuuid != null" >
+        #{roleuuid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ERP.mapper.storeoperMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ERP.model.storeoper" >
+    <constructor >
+      <idArg column="uuid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="empuuid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="opertime" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="storeuuid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="goodsuuid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="num" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="type" jdbcType="CHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uuid, empuuid, opertime, storeuuid, goodsuuid, num, type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from storeoper
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from storeoper
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ERP.model.storeoper" >
+    insert into storeoper (uuid, empuuid, opertime, 
+      storeuuid, goodsuuid, num, 
+      type)
+    values (#{uuid,jdbcType=INTEGER}, #{empuuid,jdbcType=INTEGER}, #{opertime,jdbcType=DATE}, 
+      #{storeuuid,jdbcType=INTEGER}, #{goodsuuid,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, 
+      #{type,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ERP.model.storeoper" >
+    insert into storeoper
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="empuuid != null" >
+        empuuid,
+      </if>
+      <if test="opertime != null" >
+        opertime,
+      </if>
+      <if test="storeuuid != null" >
+        storeuuid,
+      </if>
+      <if test="goodsuuid != null" >
+        goodsuuid,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uuid != null" >
+        #{uuid,jdbcType=INTEGER},
+      </if>
+      <if test="empuuid != null" >
+        #{empuuid,jdbcType=INTEGER},
+      </if>
+      <if test="opertime != null" >
+        #{opertime,jdbcType=DATE},
+      </if>
+      <if test="storeuuid != null" >
+        #{storeuuid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsuuid != null" >
+        #{goodsuuid,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ERP.model.storeoper" >
+    update storeoper
+    <set >
+      <if test="empuuid != null" >
+        empuuid = #{empuuid,jdbcType=INTEGER},
+      </if>
+      <if test="opertime != null" >
+        opertime = #{opertime,jdbcType=DATE},
+      </if>
+      <if test="storeuuid != null" >
+        storeuuid = #{storeuuid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsuuid != null" >
+        goodsuuid = #{goodsuuid,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ERP.model.storeoper" >
+    update storeoper
+    set empuuid = #{empuuid,jdbcType=INTEGER},
+      opertime = #{opertime,jdbcType=DATE},
+      storeuuid = #{storeuuid,jdbcType=INTEGER},
+      goodsuuid = #{goodsuuid,jdbcType=INTEGER},
+      num = #{num,jdbcType=INTEGER},
+      type = #{type,jdbcType=CHAR}
+    where uuid = #{uuid,jdbcType=INTEGER}
+  </update>
+</mapper>
